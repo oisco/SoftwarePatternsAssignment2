@@ -4,8 +4,11 @@
 
     app.config(function($routeProvider) {
         $routeProvider
+            .when("/viewProducts/all", {
+
+            })
             .otherwise({
-                templateUrl : "/templates/Home.html",
+                templateUrl : "/templates/Login.html",
                 controller : "HomeController as vm"
             })
     });

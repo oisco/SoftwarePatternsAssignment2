@@ -13,15 +13,14 @@ public abstract class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
-    private String username;
-    private String password;
-    private boolean isAdmin;
+     String username;
+     String password;
 
 public User(){}
-    public User(String username, String password, boolean isAdmin) {
+
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.isAdmin = isAdmin;
     }
 
     public int getId() {
@@ -48,11 +47,4 @@ public User(){}
         this.password = password;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
 }

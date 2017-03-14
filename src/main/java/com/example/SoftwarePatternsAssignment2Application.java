@@ -8,5 +8,6 @@ public class SoftwarePatternsAssignment2Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SoftwarePatternsAssignment2Application.class, args);
+
 	}
 }
