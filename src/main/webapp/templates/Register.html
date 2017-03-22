@@ -5,15 +5,15 @@
             <input type="email" class="form-control" id="username">
         </div>
         <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd">
-        </div>
-        <div class="form-group">
-            <label for="pwd">Confirm Password:</label>
+            <label for="password">Password:</label>
             <input type="password" class="form-control" id="password">
         </div>
-        <div class="checkbox">
-            <label><input type="checkbox"> Remember me</label>
+        <div class="form-group">
+            <label for="password2">Confirm Password:</label>
+            <input type="password" class="form-control" id="password2">
+        </div>
+        <div class="checkbox" >
+            <label><input type="checkbox" id="isAdmin"> Create an Administer Account</label>
         </div>
         <button type="submit" ng-click="vm.Register()"class="btn btn-default">Register</button>
     </form>
