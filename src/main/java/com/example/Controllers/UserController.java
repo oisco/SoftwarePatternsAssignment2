@@ -30,4 +30,9 @@ public class UserController {
         this.userService.saveUser(user);
     }
 
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public User login(@RequestBody Customer user){
+        return this.userService.checkIfExists(user);
+    }
+
 }

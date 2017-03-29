@@ -1,4 +1,4 @@
-angular.module('app').controller("RegisterController", function ($scope,$http, $location) {
+angular.module('app').controller("RegisterController", function ($scope,$http, $location,User) {
 
     var vm=this;
 
@@ -20,7 +20,6 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
 
             var user=new User(this.username,this.password);
 
-            var userInfo={param:user,param:this.isAdmin};
             $http({
                 method: 'POST',
                 url: url,
@@ -47,8 +46,6 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
     goToLogin = function () {
         $location.path("/");
     };
-    var User =  function(username , password) {
-        this.username = username;  this.password =  password;
-    }
+
 
 });

@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Oisín on 3/14/2017.
  */
 @Entity
-@DiscriminatorValue("ADMIN")
+//@DiscriminatorValue("ADMIN")
 public class Administrator extends User {
     
     public Administrator(String username, String password) {
