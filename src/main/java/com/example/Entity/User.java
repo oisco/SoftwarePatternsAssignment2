@@ -16,6 +16,8 @@ public abstract class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
 
+    @Transient
+    String userType;
 
      String username;
      String password;
@@ -51,4 +53,11 @@ public User(){}
         this.password = password;
     }
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 }

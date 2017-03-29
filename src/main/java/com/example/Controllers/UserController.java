@@ -7,6 +7,9 @@ import com.example.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Oisín on 3/14/2017.
  */
@@ -32,7 +35,8 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public User login(@RequestBody Customer user){
-        return this.userService.checkIfExists(user);
+        ArrayList<String> userInfo=new ArrayList<>();
+        return userService.checkIfExists(user);
     }
 
 }

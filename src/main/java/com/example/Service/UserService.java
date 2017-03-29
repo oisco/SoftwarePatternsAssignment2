@@ -29,17 +29,20 @@ public class UserService {
 
     //the below method checks if a user exists and if so if the current user loging in an admin or customer
     public User checkIfExists(User user) {
-        if( this.userDAO.checkIfExists(user.getUsername(),user.getPassword()).size()>0)//.getClass()== Administrator.class
+        if( this.userDAO.checkIfExists(user.getUsername(),user.getPassword()).size()>0)
         {
+            //find if we are looking for a admin or customer
             String custType=String.valueOf(this.userDAO.checkIfExists(user.getUsername(),user.getPassword()).get(0)[1]);
             int custId=Integer.parseInt(String.valueOf(this.userDAO.checkIfExists(user.getUsername(),user.getPassword()).get(0)[0]));
 
             if(custType.equals("Administrator")){
                 Administrator currentUser=(Administrator)userDAO.findOne(custId);
+                currentUser.setUserType(custType);
                 return currentUser;
                 }
                 else {
                 Customer currentUser=(Customer) userDAO.findOne(custId);
+                currentUser.setUserType(custType);
                 return currentUser;
             }
         }

@@ -1,0 +1,26 @@
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <ul class="nav navbar-nav" ng-show="loggedIn =='true';">
+                <li ng-show="isAdmin=='true'" ><a href="/">An admin Option</a></li>
+                <li ng-show="isAdmin=='false'" ><a href="/">An cust Option</a></li>
+                <li><a href="#Products">Products</a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-show="isAdmin" href="#HowItWorks">Add new Product</a></li>
+                        <li><a href="#viewAllPoducts">View All</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div float="right">
+        <p>Signed in as {{username}}</p>
+        <a href="/">Logout</a>
+    </div>
+
+    <h1>home</h1>
+    </form>
+</div>
