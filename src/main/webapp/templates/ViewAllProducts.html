@@ -1,1 +1,29 @@
-<h1>View All Products</h1>
+<h1 align="center">All Products</h1>
+
+
+
+<div ng-show="vm.isAdmin==='true'">
+    <button type="button" class="btn btn-default" ng-click="vm.gotToAddProduct()">Add Product</button>
+</div>
+<form>
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Search for Product" ng-model="searchFish"/>
+        </div>
+    </div>
+</form>
+<div class="table-responsive">
+    <table class="table">
+        <tr><th>Product Name</th><th>Product Description</th></tr>
+        <tr  ng-click="vm.goToProduct(product.id)" ng-repeat="product in vm.products | filter:searchFish">
+            <td>{{product.title}}</td><td>{{product.description}}</td>
+            <td>
+                <button type="button" class="btn btn-info" ng-click="vm.goToProduct(product)">View Product</button>
+                <button  ng-show="vm.isAdmin==='true'" type="button" class="btn btn-default" ng-click="vm.goToProduct(product)">Edit Product</button>
+                <button  ng-show="vm.isAdmin==='true'" type="button" class="btn btn-danger" ng-click="vm.removeProduct(product, $index)">Delete Product</button>
+            </td>
+
+        </tr>
+    </table>
+</div>

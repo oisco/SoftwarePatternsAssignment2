@@ -12,7 +12,15 @@ import javax.persistence.Id;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    int id;
+    public int id;
+
+    public String title;
+    public String description;
 
     public Product(){}
+
+    public Product(String title, String description) {
+        this.title = title;
+        this.description = description;
+    }
 }

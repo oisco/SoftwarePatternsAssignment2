@@ -3,10 +3,7 @@ package com.example.Controllers;
 import com.example.Entity.Product;
 import com.example.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +25,15 @@ public class ProductController {
     public List<Product> viewAllProducts() {
         return this.productService.findAll();
     }
+
+    @RequestMapping(value = "add",method = RequestMethod.POST)
+    public void viewAllProducts(@RequestBody Product prod) {
+         this.productService.add(prod);
+    }
+
+    @RequestMapping(value = "remove/{id}",method = RequestMethod.DELETE)
+    public void removeProduct(@PathVariable int id) {
+        this.productService.remove(id);
+    }
+
 }

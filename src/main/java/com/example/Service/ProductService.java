@@ -22,4 +22,12 @@ public class ProductService {
     public List<Product> findAll() {
        return this.productDAO.findAll();
     }
+
+    public void add(Product prod) {
+        this.productDAO.save(prod);
+    }
+
+    public void remove(int id) {
+        this.productDAO.delete(id);
+    }
 }

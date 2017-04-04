@@ -2,15 +2,14 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
 
     var vm=this;
 
-    // var username;
-    // var password;
+    vm.username = "";
+    vm.password = "";
+    vm.password2="";
 
     vm.Register = function () {
         if(passwordMatches()){
-            this.username=document.getElementById("username").value;
-            this.password=document.getElementById("password").value;
             var url="";
-            if(document.getElementById("isAdmin").checked){
+            if(vm.isAdmin){
                 url="/user/admin/add"
 
             }
@@ -18,8 +17,8 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
                 url="/user/customer/add"
             }
 
-            var user=new User(this.username,this.password);
-
+            var user=new User(vm.username,vm.password);
+            debugger;
             $http({
                 method: 'POST',
                 url: url,
@@ -34,7 +33,7 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
 
     //check to see if username is taken aand both passwords fields match
      passwordMatches=function() {
-        if(document.getElementById("password").value==document.getElementById("password2").value)
+        if(vm.password===vm.password2)
         {
             return true;
         }else {

@@ -1,9 +1,9 @@
-angular.module('app').controller("LoginController", function ($scope,$window,$http, $location,User) {
+angular.module('app').controller("LoginController", function ($route, $scope,$window,$http, $location,User) {
 
     var vm=this;
+    vm.loggedIn=false;
     $window.sessionStorage.loggedIn=false;
     $window.sessionStorage.isAdmin=false;
-
 
     vm.login=function() {
         var url="/user/login"
@@ -23,7 +23,7 @@ angular.module('app').controller("LoginController", function ($scope,$window,$ht
             else {
                 //set the user here
                 data
-                $location.path("CustHome");
+                $location.path("Home");
                 $window.sessionStorage.loggedIn=true;
                 //check here if user is cust or admin and update the top tabs to reflect
                 if(data.userType=="Administrator"){

@@ -1,23 +1,23 @@
 (function(){
     'use strict';
     var app=angular.module('app',["ngRoute"]);
-    // var loggedIn = false;
     app.config(function($routeProvider) {
         $routeProvider
-            .when("/viewProducts/all", {
-
-            })
             .when("/Register", {
                 templateUrl : "templates/Register.html",
                 controller : "RegisterController as vm"
             })
-            .when("/CustHome", {
+            .when("/Home", {
                 templateUrl : "templates/Home.html",
                 controller : "HomeController as vm",
             })
             .when("/Products", {
                 templateUrl : "templates/ViewAllProducts.html",
                 controller : "ProductsController as vm",
+            })
+            .when("/AddProduct", {
+                templateUrl : "templates/AddProduct.html",
+                controller : "AddProductController as vm",
             })
             .otherwise({
                 templateUrl : "/templates/Login.html",

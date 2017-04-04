@@ -7,8 +7,6 @@ import java.util.List;
  * Created by Oisín on 3/14/2017.
  */
 @Entity
-//@Inheritance
-//@DiscriminatorColumn(name = "USER_TYPE")
 @NamedNativeQuery(name = "User.checkIfExists", query="select id,dtype from user  where username= ?1 and password= ?2 ;")
 //@NamedNativeQuery(name = "User.checkIfExists", query="select * from user  where username= ?1 and password= ?2 ;")
 public abstract class User {
