@@ -19,6 +19,14 @@
                 templateUrl : "templates/AddProduct.html",
                 controller : "AddProductController as vm",
             })
+            .when("/EditProduct/:id", {
+            templateUrl : "templates/EditProduct.html",
+            controller : "EditProductController as vm",
+            })
+            .when("/ViewProduct/:id", {
+                templateUrl : "templates/ViewProduct.html",
+                controller : "ViewProductController as vm",
+            })
             .otherwise({
                 templateUrl : "/templates/Login.html",
                 controller : "LoginController as vm"
@@ -35,8 +43,6 @@
 
         return User;
     });
-
-
 
 })();
 

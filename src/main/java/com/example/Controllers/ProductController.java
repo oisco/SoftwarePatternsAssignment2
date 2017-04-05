@@ -26,7 +26,7 @@ public class ProductController {
         return this.productService.findAll();
     }
 
-    @RequestMapping(value = "add",method = RequestMethod.POST)
+    @RequestMapping(value = "add",method =  RequestMethod.POST)
     public void viewAllProducts(@RequestBody Product prod) {
          this.productService.add(prod);
     }
