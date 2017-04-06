@@ -1,4 +1,4 @@
-angular.module('app').controller("ViewProductController", function ($scope,$http, $location) {
+angular.module('app').controller("ViewProductController", function ($http, $location) {
     var vm=this;
-
+    vm.product=
 });
