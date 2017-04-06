@@ -1,4 +1,4 @@
-angular.module('app').controller("ProductsController", function ($window,$scope,$http, $location) {
+angular.module('app').controller("ProductsController", function ($window,$scope,$http, $location, productService) {
 
     var vm=this;
     vm.products=[];
@@ -14,19 +14,9 @@ angular.module('app').controller("ProductsController", function ($window,$scope,
         $location.path("AddProduct");
     }
 
-    vm.goToEditProduct=function (id) {
-        $location.path("EditProduct/"+id);
+    vm.goToViewProduct=function (product) {
+        productService.viewProduct(product);
+        $location.path("ViewProduct/"+product.id);
     }
 
-    vm.goToViewProduct=function (id) {
-        $location.path("ViewProduct/"+id);
-    }
-
-//take index as a param for updating the UI
-    vm.removeProduct=function (product,index) {
-        var url="/products/remove/"+product.id;
-        $http.delete(url).success(function(){
-            vm.products.splice(index, 1)
-            });
-    }
 });

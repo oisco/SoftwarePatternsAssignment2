@@ -40,8 +40,39 @@
             this.username = username;
             this.password = password;
         }
-
         return User;
+    });
+
+    //general product functionality to be reused throughout controllers by users
+    app.service('productService', function() {
+        var cart = [];
+        var productToView;
+
+        var addProduct = function(prod) {
+            cart.push(prod);
+        };
+
+        //below two functions are for passing products between controllers
+        var viewProduct = function(prod) {
+            productToView=prod;
+            debugger;
+        };
+
+        var getProductToView=function(){
+            return productToView;
+        }
+
+        var getCart = function(){
+            return cart;
+        };
+
+        return {
+            addProduct: addProduct,
+            getCart: getCart,
+            viewProduct:viewProduct,
+            getProductToView:getProductToView
+        };
+
     });
 
 })();

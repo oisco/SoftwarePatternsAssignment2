@@ -5,7 +5,6 @@ angular.module('app').controller("HomeController", function ($scope,$http, $loca
         $scope.loggedIn = $window.sessionStorage.loggedIn;
         $scope.isAdmin = $window.sessionStorage.isAdmin;
         $scope.username = $window.sessionStorage.username;
-        // debugger;debugger???
     };
 
     $scope.init();

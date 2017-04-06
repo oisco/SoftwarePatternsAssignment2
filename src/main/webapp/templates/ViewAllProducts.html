@@ -20,9 +20,7 @@
             <td>{{product.title}}</td><td>{{product.description}}</td>
             <td><img ng-src="{{product.image}}"></td>
             <td>
-                <button type="button" class="btn btn-info" ng-click="vm.goToViewProduct(product.id)">View Product</button>
-                <button  ng-show="vm.isAdmin==='true'" type="button" class="btn btn-default" ng-click="vm.goToEditProduct(product.id)">Edit Product</button>
-                <button  ng-show="vm.isAdmin==='true'" type="button" class="btn btn-danger" ng-click="vm.removeProduct(product, $index)">Delete Product</button>
+                <button type="button" class="btn btn-info" ng-click="vm.goToViewProduct(product)">View Product</button>
             </td>
 
         </tr>

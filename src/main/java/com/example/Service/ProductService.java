@@ -30,4 +30,8 @@ public class ProductService {
     public void remove(int id) {
         this.productDAO.delete(id);
     }
+
+    public void update(Product prod) {
+        this.productDAO.save(prod);
+    }
 }
