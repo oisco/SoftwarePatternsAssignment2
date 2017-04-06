@@ -18,4 +18,11 @@ angular.module('app').controller("ViewProductController", function ($http,$windo
             }
         });
     }
+
+    vm.addToCart=function () {
+        productService.addProduct(vm.product);
+        alert("product added to cart");
+
+    }
+
 });

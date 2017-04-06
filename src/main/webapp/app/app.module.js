@@ -27,6 +27,10 @@
                 templateUrl : "templates/ViewProduct.html",
                 controller : "ViewProductController as vm",
             })
+            .when("/MyCart", {
+                templateUrl : "templates/MyCart.html",
+                controller : "MyCartController as vm",
+            })
             .otherwise({
                 templateUrl : "/templates/Login.html",
                 controller : "LoginController as vm"

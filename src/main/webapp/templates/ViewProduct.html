@@ -1,0 +1,18 @@
+<h1>View Product</h1>
+
+<div ng-show="vm.isAdmin==='true'">
+    <button   type="button" class="btn btn-default" ng-click="vm.goToEditProduct()">Edit Product</button>
+    <button  type="button" class="btn btn-danger" ng-click="vm.removeProduct()">Delete Product</button>
+</div>
+<div ng-show="vm.isAdmin==='false'">
+    <button ng-if="vm.product.stockLevel!=='0'" type="button" class="btn btn-default" ng-click="vm.addToCart()">Add to cart</button>
+</div>
+
+<table class="table">
+    <td><img ng-src="{{vm.product.image}}"></td>
+    <tr><td>Title</td><td>{{vm.product.title}}</td></tr>
+    <tr><td>Manufacturer</td><td>{{vm.product.manufacturer}}</td></tr>
+    <tr><td>Description</td><td>{{vm.product.description}}</td></tr>
+    <tr><td>Price</td><td>{{vm.product.price}}</td></tr>
+    <tr><td>Amount remaining</td><td>{{vm.product.stockLevel}}</td></tr>
+</table>
