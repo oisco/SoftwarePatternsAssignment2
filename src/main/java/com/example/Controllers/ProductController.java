@@ -36,4 +36,8 @@ public class ProductController {
         this.productService.remove(id);
     }
 
+    @RequestMapping(value = "update",method = RequestMethod.PUT)
+    public void updateProduct(@RequestBody Product prod) {
+        this.productService.update(prod);
+    }
 }
