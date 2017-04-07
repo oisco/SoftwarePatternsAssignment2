@@ -1,4 +1,6 @@
 angular.module('app').controller("HomeController", function ($scope,$http, $location,$window) {
+    var vm=this;
+
     $scope.init = function(){
 
         var i=true;

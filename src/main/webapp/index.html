@@ -13,6 +13,7 @@
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app/app.module.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js" ></script>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
 
     <script type="text/javascript" src="app/Controllers/app.controller.js"></script>
     <script type="text/javascript" src="app/Controllers/home.controller.js"></script>
@@ -38,11 +39,11 @@
             <li ng-show="vm.isAdmin==='true'" ><a href="/">An admin Option</a></li>
             <li><a href="#Products">View All Products</a></li>
             <li ng-show="vm.isAdmin==='false'"><a href="#MyOrders">My orders</a></li>
-            <li ng-show="vm.isAdmin==='false'"><a href="#MyCart">My Cart</a></li>
+            <li ng-show="vm.isAdmin==='false'"><a href="#MyCart">My Cart({{vm.cartItemCount}}</a></li>
         </ul>
         <div align="right">
             <p>Signed in as {{vm.username}}</p>
-            <a href="/">Logout</a>
+            <button class="button" ng-click="vm.logout()">Logout</button>
         </div>
     </div>
 </nav>

@@ -1,4 +1,4 @@
-angular.module('app').controller("LoginController", function ($route, $scope,$window,$http, $location,User) {
+angular.module('app').controller("LoginController", function ($route, $scope,$window,$http, $location,User,UserState) {
 
     var vm=this;
     vm.loggedIn=false;
@@ -31,6 +31,8 @@ angular.module('app').controller("LoginController", function ($route, $scope,$wi
                 }
                 $window.sessionStorage.username=data.username;
                 $window.sessionStorage.userId=data.id;
+                //trigger
+                UserState.notify(true);
             }
 
         }).error(function () {

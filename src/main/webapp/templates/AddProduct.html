@@ -1,0 +1,36 @@
+<h1>Add Product</h1>
+
+<form name="addProductForm">
+    <div class="form-group">
+        <label for="productTitle">Product Title:</label>
+        <input type="text" class="form-control" ng-model="product.title" required id="productTitle">
+    </div>
+
+    <div class="form-group">
+        <label for="productPrice">Price:</label>
+        <input type="number" min="1" step="any" class="form-control" ng-model="product.price" required id="productPrice">
+    </div>
+
+    <div class="form-group">
+        <label for="productStockLevel">Stock level:</label>
+        <input type="number" class="form-control" ng-model="product.StockLevel" required id="productStockLevel">
+    </div>
+
+    <div class="form-group">
+        <label for="productImage">Image:</label>
+        <input type="text" min="1" step="any" class="form-control" ng-model="product.image" required id="productImage">
+    </div>
+
+
+    <div class="form-group">
+        <label for="manufacturer">Manufacturer:</label>
+        <input type="text" class="form-control" ng-model="product.manufacturer" required id="manufacturer">
+    </div>
+
+    <div class="form-group">
+        <label for="prodDesc">Description:</label>
+        <input type="text" class="form-control" ng-model="product.description" required id="prodDesc">
+    </div>
+
+    <button type="submit" ng-click="vm.createProduct(product)" class="btn btn-default">Submit</button>
+</form>

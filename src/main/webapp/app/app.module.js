@@ -79,6 +79,23 @@
 
     });
 
+    app.factory('UserState', function () {
+        var _subscribers = [];
+
+        return {
+            subscribe: function (cb) {
+                _subscribers.push(cb);
+            },
+            notify:function(toNotify) {
+                // notify all subscribers
+                angular.forEach(_subscribers, function (cb) {
+                    cb(toNotify);
+                });
+            }
+        };
+
+    })
+
 })();
 
 
