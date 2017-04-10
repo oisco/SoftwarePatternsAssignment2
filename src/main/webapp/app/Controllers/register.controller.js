@@ -18,7 +18,6 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
             }
 
             var user=new User(vm.username,vm.password);
-            debugger;
             $http({
                 method: 'POST',
                 url: url,

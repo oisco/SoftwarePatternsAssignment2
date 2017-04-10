@@ -10,20 +10,13 @@ angular.module('app').controller("MyCartController", function (productService,$h
         return total;
     }
 
-    vm.checkout=function(){
-        //
-        // var url="/products/update";
-        // $http({
-        //     method: 'PUT',
-        //     url: url,
-        //     data: vm.product,
-        //     headers: {'Content-Type': 'application/json'}
-        // }).success(function (data) {
-        //     if (data == "") {
-        //         alert("product updated");
-        //         $location.path("Products")
-        //     }
-        // });
+    vm.removeProduct=function (product) {
+        productService.removeProduct(product);
+        alert("Product removed");
+    }
+    vm.goToCheckout=function(){
+        $location.path("Checkout");
+
     }
 
 

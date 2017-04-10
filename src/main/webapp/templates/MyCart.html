@@ -3,9 +3,14 @@
 <table class="table">
     <th>Product</th>
     <th>Price</th>
-    <tr ng-repeat="product in vm.products">
+    <tr ng-repeat="product in vm.products track by $index">
         <td>{{product.title}} <img ng-src="{{product.image}}"></td>
         <td>{{product.price}}</td>
+        <td><button class="btn btn-danger" ng-click="vm.removeProduct(product)">Remove</button> </td>
     </tr>
-    <tr><b>Total:</b> {{vm.getTotal()}}</tr>
+    <tr><b>Total:</b> {{vm.getTotal()}}
+        <td ng-show="vm.products.length>0">
+            <button class="button" ng-click="vm.goToCheckout()">Proceed to checkout</button>
+        </td>
+    </tr>
 </table>
