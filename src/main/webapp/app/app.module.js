@@ -31,6 +31,10 @@
                 templateUrl : "templates/MyCart.html",
                 controller : "MyCartController as vm",
             })
+            .when("/Checkout", {
+                templateUrl : "templates/Checkout.html",
+                controller : "CheckoutController as vm",
+            })
             .otherwise({
                 templateUrl : "/templates/Login.html",
                 controller : "LoginController as vm"
@@ -51,6 +55,10 @@
     app.service('productService', function() {
         var cart = [];
         var productToView;
+
+        var removeProduct=function (prod) {
+            cart.splice(cart.indexOf(prod),1);
+        }
 
         var addProduct = function(prod) {
             cart.push(prod);
@@ -74,7 +82,8 @@
             addProduct: addProduct,
             getCart: getCart,
             viewProduct:viewProduct,
-            getProductToView:getProductToView
+            getProductToView:getProductToView,
+            removeProduct:removeProduct
         };
 
     });
