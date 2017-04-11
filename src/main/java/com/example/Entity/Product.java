@@ -1,6 +1,9 @@
 package com.example.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Oisín on 3/14/2017.
@@ -17,6 +20,10 @@ public class Product {
     public String description;
     public int stockLevel;
     private String image;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "products",targetEntity = CustOrder.class)
+    List<CustOrder> orders;
 
     public Product(){}
 

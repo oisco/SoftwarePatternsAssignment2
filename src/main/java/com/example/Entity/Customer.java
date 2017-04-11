@@ -15,8 +15,8 @@ import java.util.List;
 public class Customer extends User {
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY,targetEntity=Order.class,mappedBy = "customer")
-    private List<Order> orders;
+    @OneToMany(fetch = FetchType.LAZY,targetEntity=CustOrder.class,mappedBy = "customer")
+    private List<CustOrder> orders;
 
     //save a customers primary address
     @OneToOne
@@ -24,21 +24,21 @@ public class Customer extends User {
 
     public Customer(){}
 
-    public Customer(String username, String password, List<Order> orders, Address address) {
+    public Customer(String username, String password, List<CustOrder> orders, Address address) {
         super(username, password);
         this.orders = orders;
         this.address = address;
     }
 
-    public List<Order> getOrders() {
+    public List<CustOrder> getCustOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setCustOrders(List<CustOrder> orders) {
         this.orders = orders;
     }
 
-    public void addOrder(Order order){
+    public void addCustOrder(CustOrder order){
         this.orders.add(order);
     }
 

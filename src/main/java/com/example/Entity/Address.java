@@ -28,7 +28,7 @@ public class Address {
     private Customer customer;
 
     @OneToMany(mappedBy = "address")
-    List<Order> orders;
+    List<CustOrder> orders;
 
     public Address(){}
 
