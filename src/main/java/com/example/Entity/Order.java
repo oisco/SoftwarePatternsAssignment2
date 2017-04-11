@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Oisín on 3/14/2017.
@@ -18,6 +17,9 @@ public class Order {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Customer customer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    Address address;
 
     Date date;
 

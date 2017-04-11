@@ -1,14 +1,16 @@
 package com.example.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * Created by Oisín on 3/14/2017.
  */
 @Entity
 @NamedNativeQuery(name = "User.checkIfExists", query="select id,dtype from user  where username= ?1 and password= ?2 ;")
-//@NamedNativeQuery(name = "User.checkIfExists", query="select * from user  where username= ?1 and password= ?2 ;")
+@JsonIgnoreProperties(ignoreUnknown = true)
+
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

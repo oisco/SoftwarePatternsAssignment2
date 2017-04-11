@@ -2,11 +2,14 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
 
     var vm=this;
 
+    vm.user=null;
     vm.username = "";
     vm.password = "";
     vm.password2="";
 
     vm.Register = function () {
+        vm.user;
+        debugger;
         if(passwordMatches()){
             var url="";
             if(vm.isAdmin){
@@ -21,7 +24,7 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
             $http({
                 method: 'POST',
                 url: url,
-                data: user,
+                data:vm.user,
                 headers: {'Content-Type': 'application/json'}
             });
 
