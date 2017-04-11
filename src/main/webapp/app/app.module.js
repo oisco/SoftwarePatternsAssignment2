@@ -74,6 +74,14 @@
             return productToView;
         }
 
+        var total = function () {
+            var cost=0;
+            for(var i = 0; i < cart.length; i++){
+                cost += (cart[i].price );
+            }
+            return cost;
+        }
+
         var getCart = function(){
             return cart;
         };
@@ -83,7 +91,8 @@
             getCart: getCart,
             viewProduct:viewProduct,
             getProductToView:getProductToView,
-            removeProduct:removeProduct
+            removeProduct:removeProduct,
+            total:total
         };
 
     });

@@ -30,6 +30,8 @@ public class Address {
     @OneToMany(mappedBy = "address")
     List<Order> orders;
 
+    public Address(){}
+
     public Address(int id, String addressLine1, String addressLine2, String addressLine3, String city, String country, Customer customer) {
         this.id = id;
         this.addressLine1 = addressLine1;

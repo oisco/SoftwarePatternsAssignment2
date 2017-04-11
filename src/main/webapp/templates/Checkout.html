@@ -1,1 +1,39 @@
 <h1>Checkout</h1>
+<div>
+    <h2>Order</h2>
+    <table class="table">
+        <th>Product</th>
+        <th>Price</th>
+    <tr ng-repeat="product in vm.order track by $index">
+        <td>{{product.title}} <img ng-src="{{product.image}}"></td>
+        <td>{{product.price}}</td>
+    </tr>
+    </table>
+    <p><b> Total :</b> {{vm.total}}</p>
+</div>
+<div>
+    <h2>Address</h2>
+    <div>
+        <p>
+            {{vm.address.address_line1}},
+            {{vm.address.address_line2}},
+            {{vm.address.address_line3}},
+            {{vm.address.city}},
+            {{vm.address.country}}
+        </p>
+
+    </div>
+</div>
+<div>
+    <h2>Payment Type</h2>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Paypal
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paypal</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Visa</a></li>
+        </ul>
+    </div>
+
+    <button class="button">Place order</button>
+</div>

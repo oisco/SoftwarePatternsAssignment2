@@ -22,7 +22,6 @@ public class Order {
     Address address;
 
     Date date;
-
     public Order(Customer customer, Date date) {
         this.customer = customer;
         this.date = date;

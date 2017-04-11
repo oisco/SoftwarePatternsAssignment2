@@ -1,6 +1,7 @@
 package com.example.Service;
 
 import com.example.DAO.AddressDAO;
+import com.example.DAO.CustomerDAO;
 import com.example.Entity.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,12 @@ import org.springframework.stereotype.Service;
 public class AddressService {
     @Autowired
     AddressDAO addressDAO;
+    @Autowired
+    CustomerDAO customerDAO;
+
     public void save(Address address){
         addressDAO.save(address);
     }
+
+
 }

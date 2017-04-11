@@ -2,6 +2,7 @@ package com.example.Service;
 
 import com.example.DAO.CustomerDAO;
 import com.example.DAO.UserDAO;
+import com.example.Entity.Address;
 import com.example.Entity.Administrator;
 import com.example.Entity.Customer;
 import com.example.Entity.User;
@@ -49,5 +50,9 @@ public class UserService {
         else {
             return null;
         }
+    }
+
+    public Address getUsersAddress(int id) {
+        return customerDAO.getOne(id).getAddress();
     }
 }

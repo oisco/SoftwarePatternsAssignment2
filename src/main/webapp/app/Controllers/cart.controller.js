@@ -2,13 +2,7 @@ angular.module('app').controller("MyCartController", function (productService,$h
 
     var vm=this;
     vm.products=productService.getCart();
-    vm.getTotal = function(){
-        var total = 0;
-        for(var i = 0; i < vm.products.length; i++){
-            total += (vm.products[i].price );
-        }
-        return total;
-    }
+    vm.total = productService.total();
 
     vm.removeProduct=function (product) {
         productService.removeProduct(product);

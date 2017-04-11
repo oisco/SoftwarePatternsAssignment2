@@ -1,5 +1,6 @@
 package com.example.Controllers;
 
+import com.example.Entity.Address;
 import com.example.Entity.Administrator;
 import com.example.Entity.Customer;
 import com.example.Entity.User;
@@ -8,12 +9,7 @@ import com.example.Service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Oisín on 3/14/2017.
@@ -48,8 +44,11 @@ public class UserController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public User login(@RequestBody Customer user){
-        ArrayList<String> userInfo=new ArrayList<>();
         return userService.checkIfExists(user);
     }
 
+    @RequestMapping(value = "{id}/address",method = RequestMethod.GET)
+    public Address getUsersAddress(@PathVariable int id) {
+        return this.userService.getUsersAddress(id);
+    }
 }
