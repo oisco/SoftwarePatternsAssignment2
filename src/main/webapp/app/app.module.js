@@ -51,7 +51,7 @@
         var User = function (username, password) {
             this.username = username;
             this.password = password;
-        }
+        };
         return User;
     });
 
@@ -62,12 +62,15 @@
 
         var removeProduct=function (prod) {
             cart.splice(cart.indexOf(prod),1);
-        }
+        };
 
         var addProduct = function(prod) {
             cart.push(prod);
         };
 
+        var clearCart = function () {
+            cart = [];
+        };
         //below two functions are for passing products between controllers
         var viewProduct = function(prod) {
             productToView=prod;
@@ -75,7 +78,7 @@
 
         var getProductToView=function(){
             return productToView;
-        }
+        };
 
         var total = function () {
             var cost=0;
@@ -83,7 +86,7 @@
                 cost += (cart[i].price );
             }
             return cost;
-        }
+        };
 
         var getCart = function(){
             return cart;
@@ -95,7 +98,8 @@
             viewProduct:viewProduct,
             getProductToView:getProductToView,
             removeProduct:removeProduct,
-            total:total
+            total: total,
+            clearCart: clearCart
         };
 
     });
