@@ -6,6 +6,7 @@ angular.module('app').controller("MyCartController", function (productService,$h
 
     vm.removeProduct=function (product) {
         productService.removeProduct(product);
+        vm.total = productService.total();
         alert("Product removed");
     }
     vm.goToCheckout=function(){

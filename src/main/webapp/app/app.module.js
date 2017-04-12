@@ -35,6 +35,10 @@
                 templateUrl : "templates/Checkout.html",
                 controller : "CheckoutController as vm",
             })
+            .when("/MyOrders", {
+                templateUrl : "templates/MyOrders.html",
+                controller : "OrderController as vm",
+            })
             .otherwise({
                 templateUrl : "/templates/Login.html",
                 controller : "LoginController as vm"

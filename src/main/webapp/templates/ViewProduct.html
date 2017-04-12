@@ -5,7 +5,7 @@
     <button  type="button" class="btn btn-danger" ng-click="vm.removeProduct()">Delete Product</button>
 </div>
 <div ng-show="vm.isAdmin==='false'">
-    <button ng-if="vm.product.stockLevel!=='0'" type="button" class="btn btn-default" ng-click="vm.addToCart()">Add to cart</button>
+    <button ng-if="vm.product.stockLevel>0" type="button" class="btn btn-default" ng-click="vm.addToCart()">Add to cart</button>
 </div>
 
 <table class="table">

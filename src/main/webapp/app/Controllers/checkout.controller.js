@@ -6,7 +6,7 @@ angular.module('app').controller("CheckoutController", function (productService,
     vm.order=productService.getCart();
     vm.total=productService.total();
 
-    var userId=$window.sessionStorage.userId;
+        var userId=$window.sessionStorage.userId;
 
         //request the users address from server
     var url="/user/"+userId+"/address";
@@ -16,17 +16,18 @@ angular.module('app').controller("CheckoutController", function (productService,
         });
 
     vm.saveOrder=function () {
-        vm.order
-        vm.address;
-        vm.paymentType;
          var params=[vm.order,vm.address,vm.paymentType,userId];
-        debugger
         var url="orders/add";
         $http({
             method: 'POST',
             url: url,
             data:params,
             headers: {'Content-Type': 'application/json'}
-        });
+        }).success(function (data) {
+            if (data == "") {
+                alert("Your order is on its way");
+                $location.path("MyCart");
+            }
+        });;
     }
 });

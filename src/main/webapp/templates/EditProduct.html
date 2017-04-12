@@ -12,6 +12,11 @@
     </div>
 
     <div class="form-group">
+        <label for="productStockLevel">Amount remaining:</label>
+        <input type="number" min="1" step="any" class="form-control" ng-model="vm.product.stockLevel" required id="productStockLevel">
+    </div>
+
+    <div class="form-group">
         <label for="productImage">Image:</label>
         <input type="text" min="1" step="any" class="form-control" ng-model="vm.product.image" required id="productImage">
     </div>

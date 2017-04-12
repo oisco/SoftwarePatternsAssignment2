@@ -2,6 +2,7 @@ angular.module('app').controller("ViewProductController", function ($http,$windo
     var vm=this;
     vm.isAdmin=$window.sessionStorage.isAdmin;
     vm.product=productService.getProductToView();
+    debugger;
 
     vm.goToEditProduct=function () {
         productService.viewProduct(vm.product);
@@ -20,6 +21,7 @@ angular.module('app').controller("ViewProductController", function ($http,$windo
     }
 
     vm.addToCart=function () {
+        vm.product.stockLevel--;
         productService.addProduct(vm.product);
         alert("product added to cart");
 

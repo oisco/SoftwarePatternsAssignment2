@@ -31,9 +31,12 @@ public class CustomerOrderBuilder implements OrderBuilder {
 
     public CustomerOrderBuilder()
     {
-        this.order=new CustOrder();
+//        this.order=new CustOrder();
     }
 
+    public void createOrder(){
+            this.order=new CustOrder();
+    }
 
     @Override
     public void buildPaymentType(Object paymentType) {
@@ -43,6 +46,7 @@ public class CustomerOrderBuilder implements OrderBuilder {
     @Override
     public void buildProductList(ArrayList<LinkedHashMap> products) {
         ArrayList<Product> productList=new ArrayList<>();
+        double cost=0;
 
         for (int i = 0; i<products.size(); i++){
             //find product being added to the order
@@ -53,8 +57,10 @@ public class CustomerOrderBuilder implements OrderBuilder {
             theProd.setStockLevel(newStockLevel);
             productDAO.save(theProd);
             //add to order
+            cost+=theProd.getPrice();
             productList.add(theProd);
         }
+        this.order.setCost(cost);
         this.order.setProducts(productList);
     }
 

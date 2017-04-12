@@ -20,6 +20,8 @@ public class CustOrder implements OrderPlan {
     @ManyToOne(fetch = FetchType.LAZY)
     private Customer customer;
 
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     Address address;
 
@@ -27,19 +29,40 @@ public class CustOrder implements OrderPlan {
     List<Product> products;
 
     Date order_date;
+    double cost;
+
     String paymentType;
 
     public CustOrder(){
 
     }
 
-    public CustOrder(Customer customer, Date order_date, String paymentType) {
+    public CustOrder(Customer customer, Address address, List<Product> products, Date order_date, double cost, String paymentType) {
         this.customer = customer;
+        this.address = address;
+        this.products = products;
         this.order_date = order_date;
+        this.cost = cost;
         this.paymentType = paymentType;
     }
 
-        public Address getAddress() {
+    public Date getOrder_date() {
+        return order_date;
+    }
+
+    public void setOrder_date(Date order_date) {
+        this.order_date = order_date;
+    }
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public Address getAddress() {
         return address;
     }
 

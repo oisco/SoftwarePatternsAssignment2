@@ -1,7 +1,7 @@
 package com.example.Entity;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +10,8 @@ import java.util.List;
  * Created by Oisín on 4/10/2017.
  */
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonAutoDetect
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,19 +28,20 @@ public class Address {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "address")
     private Customer customer;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "address")
     List<CustOrder> orders;
 
     public Address(){}
 
-    public Address(int id, String addressLine1, String addressLine2, String addressLine3, String city, String country, Customer customer) {
-        this.id = id;
+    public Address(String addressLine1, String addressLine2, String addressLine3, String city, String country, Customer customer, List<CustOrder> orders) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.addressLine3 = addressLine3;
         this.city = city;
         this.country = country;
         this.customer = customer;
+        this.orders = orders;
     }
 
     public int getId() {
