@@ -1,5 +1,6 @@
 package com.example.Entity;
 
+import com.example.Builder.OrderPlan;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -10,8 +11,7 @@ import java.util.List;
 // * Created by Oisín on 3142017.
 // *
 @Entity
-public class CustOrder {
-//        implements CustOrderPlan{
+public class CustOrder implements OrderPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;

@@ -27,13 +27,19 @@
 <div>
     <h2>Payment Type</h2>
     <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Paypal
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paypal</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Visa</a></li>
-        </ul>
+        <!--<button ng-model="vm.paymentType" class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Paypal-->
+            <!--<span class="caret"></span></button>-->
+            <!--<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">-->
+            <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Paypal</a></li>-->
+            <!--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Visa</a></li>-->
+        <!--</ul>-->
+        <select class="form-control btn btn-primary dropdown-toggle"
+                data-ng-model="vm.paymentType">
+
+            <option><a href="#">Paypal</a></option>
+            <option><a href="#">Visa Debit</a></option>
+        </select>
     </div>
 
-    <button class="button">Place order</button>
+    <button class="button" ng-click="vm.saveOrder()">Place order</button>
 </div>

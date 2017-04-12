@@ -67,7 +67,6 @@
         //below two functions are for passing products between controllers
         var viewProduct = function(prod) {
             productToView=prod;
-            debugger;
         };
 
         var getProductToView=function(){
