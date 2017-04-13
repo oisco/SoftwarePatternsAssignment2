@@ -27,14 +27,7 @@ angular.module('app').controller("LoginController", function ($route, $scope, $w
                 //set the user here
                 data;
                 $location.path("Home");
-                // $window.sessionStorage.loggedIn=true;
-                //check here if user is cust or admin and update the top tabs to reflect
-                // if(data.userType=="Administrator"){
-                //     $window.sessionStorage.isAdmin=true;
-                // }
-                // $window.sessionStorage.username=data.username;
-                // $window.sessionStorage.userId=data.id;
-                //
+
                 var isAdmin = false;
                 if(data.userType=="Administrator"){
                     isAdmin = true;
@@ -47,6 +40,7 @@ angular.module('app').controller("LoginController", function ($route, $scope, $w
                 };
 
                 $cookies.putObject("user", userDetails);
+                debugger;
 
                 //trigger observer
                 UserState.notify(true);

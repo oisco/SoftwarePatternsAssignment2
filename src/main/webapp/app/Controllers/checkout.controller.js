@@ -13,7 +13,6 @@ angular.module('app').controller("CheckoutController", function (productService,
     var addressPromise=$http.get(url);
     addressPromise.then(function (response) {
             vm.address=response.data;
-        debugger;
         });
 
     vm.saveOrder=function () {

@@ -17,24 +17,32 @@
     <tr><td>Price</td><td>{{vm.product.price}}</td></tr>
     <tr><td>Amount remaining</td><td>{{vm.product.stockLevel}}</td></tr>
 </table>
-
+    <div>
+        <h3>Average rating:</h3>
     <span>
-        <span ng-repeat="rating in vm.ratings">{{rating.current}} out of
-            {{rating.max}}
-        <div star-rating rating-value="rating.current" max="rating.max"></div>
-        </span>
+            <div star-rating rating-value="vm.rating" max="5"></div>
     </span>
+    </div>
+
+</div>
 
     <form>
         <div class="form-group">
             <h3>Leave a review</h3>
             <label for="comment">Post A comment:</label>
+            <span>
+                <div star-rating rating-value="1" max="5" on-rating-selected="vm.setRating(rating)"></div>
+            </span>
             <input ng-model="vm.comment.comment" type="text" class="form-control" id="comment">
+
         </div>
         <button type="submit" ng-click="vm.postComment()" class="btn btn-default">Save Review</button>
     </form>
 
-    <div ng-repeat="comment in vm.product.comments">
+<div class="comment" ng-repeat="comment in vm.product.comments  track by $index">
         <p> {{comment.comment}}</p>
+    <span>
+            <div star-rating rating-value="comment.rating" max="5"></div>
+        </span>
     </div>
 </div>

@@ -1,18 +1,18 @@
-angular.module('app').controller("ProductsController", function ($window,$scope,$http, $location, productService) {
+angular.module('app').controller("ProductsController", function ($cookies, $scope, $http, $location, productService) {
 
     var vm=this;
     vm.products=[];
-    vm.isAdmin=$window.sessionStorage.isAdmin;
+    vm.user = $cookies.getObject("user");
 
-    var url="/products/all"
+    var url = "/products/all";
     var productsPromise=$http.get(url);
     productsPromise.then(function (response) {
         vm.products=response.data;
-    })
+    });
 
     vm.gotToAddProduct=function () {
         $location.path("AddProduct");
-    }
+    };
 
     vm.goToViewProduct=function (product) {
         productService.viewProduct(product);

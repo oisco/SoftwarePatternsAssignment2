@@ -21,6 +21,7 @@ public class Product {
     public int stockLevel;
     @OneToMany
     List<Comment> comments;
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY,mappedBy = "products",targetEntity = CustOrder.class)
     List<CustOrder> orders;

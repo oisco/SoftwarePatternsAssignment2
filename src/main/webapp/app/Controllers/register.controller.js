@@ -3,9 +3,6 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
     var vm=this;
 
     vm.user=null;
-    vm.username = "";
-    vm.password = "";
-    vm.password2="";
 
     vm.Register = function () {
         vm.user;

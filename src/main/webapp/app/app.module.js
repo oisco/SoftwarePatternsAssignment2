@@ -104,33 +104,53 @@
 
     });
 
+    //used for product ratings
     app.directive('starRating', function () {
         return {
             restrict: 'A',
             template: '<ul class="rating">' +
-            '<div ng-repeat="star in stars" ng-class="star">' +
+            '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
             '\u2605' +
-            '</div>' +
+            '</li>' +
             '</ul>',
             scope: {
                 ratingValue: '=',
-                max: '='
+                max: '=',
+                onRatingSelected: '&'
             },
             link: function (scope, elem, attrs) {
-                scope.stars = [];
-                for (var i = 0; i < scope.max; i++) {
-                    scope.stars.push({
-                        filled: i < scope.ratingValue
+
+                var updateStars = function () {
+                    scope.stars = [];
+                    for (var i = 0; i < scope.max; i++) {
+                        scope.stars.push({
+                            filled: i < scope.ratingValue
+                        });
+                    }
+                };
+
+                scope.toggle = function (index) {
+                    scope.ratingValue = index + 1;
+                    scope.onRatingSelected({
+                        rating: index + 1
                     });
-                }
+                };
+
+                scope.$watch('ratingValue', function (oldVal, newVal) {
+                    if (newVal) {
+                        updateStars();
+                    }
+                });
             }
         }
     });
 
+    //factory below uses observer pattern to notify controllers when the user logs out to --1. hide navbar 2. clear cart
     app.factory('UserState', function () {
         var _subscribers = [];
 
         return {
+            //add a subscriber
             subscribe: function (cb) {
                 _subscribers.push(cb);
             },

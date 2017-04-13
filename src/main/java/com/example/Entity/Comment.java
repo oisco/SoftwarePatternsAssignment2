@@ -20,18 +20,32 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = Product.class)
     Product product;
 
+    @JsonIgnore
     @ManyToOne
     Customer customer;
+
+    //used to set a comments user
+    @Transient
+    int userId;
 
     public Comment() {
 
     }
 
-    public Comment(int rating, String comment, Product product, Customer customer) {
+    public Comment(int rating, String comment, Product product, Customer customer, int userId) {
         this.rating = rating;
         this.comment = comment;
         this.product = product;
         this.customer = customer;
+        this.userId = userId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getId() {
