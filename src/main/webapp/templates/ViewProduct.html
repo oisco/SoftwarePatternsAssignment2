@@ -1,10 +1,11 @@
+<div class="container">
 <h1>View Product</h1>
 
-<div ng-show="vm.isAdmin==='true'">
+    <div ng-show="vm.user.isAdmin===true">
     <button   type="button" class="btn btn-default" ng-click="vm.goToEditProduct()">Edit Product</button>
     <button  type="button" class="btn btn-danger" ng-click="vm.removeProduct()">Delete Product</button>
 </div>
-<div ng-show="vm.isAdmin==='false'">
+    <div ng-show="vm.user.isAdmin===false">
     <button ng-if="vm.product.stockLevel>0" type="button" class="btn btn-default" ng-click="vm.addToCart()">Add to cart</button>
 </div>
 
@@ -16,3 +17,24 @@
     <tr><td>Price</td><td>{{vm.product.price}}</td></tr>
     <tr><td>Amount remaining</td><td>{{vm.product.stockLevel}}</td></tr>
 </table>
+
+    <span>
+        <span ng-repeat="rating in vm.ratings">{{rating.current}} out of
+            {{rating.max}}
+        <div star-rating rating-value="rating.current" max="rating.max"></div>
+        </span>
+    </span>
+
+    <form>
+        <div class="form-group">
+            <h3>Leave a review</h3>
+            <label for="comment">Post A comment:</label>
+            <input ng-model="vm.comment.comment" type="text" class="form-control" id="comment">
+        </div>
+        <button type="submit" ng-click="vm.postComment()" class="btn btn-default">Save Review</button>
+    </form>
+
+    <div ng-repeat="comment in vm.product.comments">
+        <p> {{comment.comment}}</p>
+    </div>
+</div>

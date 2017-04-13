@@ -1,7 +1,7 @@
-angular.module('app').controller("OrderController", function ($http, $window) {
+angular.module('app').controller("OrderController", function ($http, $cookies) {
 
     var vm=this;
-    var userId=$window.sessionStorage.userId;
+    var userId = $cookies.getObject("user").userId;
 
     var url="/orders/"+userId;
     var ordersPromise=$http.get(url);

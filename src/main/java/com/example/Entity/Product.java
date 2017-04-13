@@ -19,21 +19,40 @@ public class Product {
     public double price;
     public String description;
     public int stockLevel;
-    private String image;
-
+    @OneToMany
+    List<Comment> comments;
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY,mappedBy = "products",targetEntity = CustOrder.class)
     List<CustOrder> orders;
+    private String image;
 
     public Product(){}
 
-    public Product(String title, String manufacturer, double price, String description, int stockLevel,String image) {
+    public Product(String title, String manufacturer, double price, String description, int stockLevel, String image, List<Comment> comments, List<CustOrder> orders) {
         this.title = title;
         this.manufacturer = manufacturer;
         this.price = price;
         this.description = description;
         this.stockLevel = stockLevel;
         this.image = image;
+        this.comments = comments;
+        this.orders = orders;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<CustOrder> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<CustOrder> orders) {
+        this.orders = orders;
     }
 
     public String getManufacturer() {

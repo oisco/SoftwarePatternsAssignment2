@@ -1,6 +1,8 @@
 package com.example.Service;
 
+import com.example.DAO.CommentDAO;
 import com.example.DAO.ProductDAO;
+import com.example.Entity.Comment;
 import com.example.Entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ import java.util.List;
 public class ProductService {
     @Autowired
     private ProductDAO productDAO;
+    @Autowired
+    private CommentDAO commentDAO;
+
     public ProductService(ProductDAO productDAO){
 
         this.productDAO=productDAO;
@@ -33,5 +38,12 @@ public class ProductService {
 
     public void update(Product prod) {
         this.productDAO.save(prod);
+    }
+
+    public void addCommentToProduct(int prodId, Comment comment) {
+        Product product = this.productDAO.findOne(prodId);
+        product.getComments().add(comment);
+        this.commentDAO.save(comment);
+        this.productDAO.save(product);
     }
 }

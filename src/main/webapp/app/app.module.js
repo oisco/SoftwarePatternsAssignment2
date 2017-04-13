@@ -1,6 +1,6 @@
 (function(){
     'use strict';
-    var app=angular.module('app',["ngRoute"]);
+    var app = angular.module('app', ["ngRoute", 'ngCookies']);
     app.config(function($routeProvider) {
         $routeProvider
             .when("/Register", {
@@ -102,6 +102,29 @@
             clearCart: clearCart
         };
 
+    });
+
+    app.directive('starRating', function () {
+        return {
+            restrict: 'A',
+            template: '<ul class="rating">' +
+            '<div ng-repeat="star in stars" ng-class="star">' +
+            '\u2605' +
+            '</div>' +
+            '</ul>',
+            scope: {
+                ratingValue: '=',
+                max: '='
+            },
+            link: function (scope, elem, attrs) {
+                scope.stars = [];
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars.push({
+                        filled: i < scope.ratingValue
+                    });
+                }
+            }
+        }
     });
 
     app.factory('UserState', function () {

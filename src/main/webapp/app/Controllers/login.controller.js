@@ -1,12 +1,15 @@
-angular.module('app').controller("LoginController", function ($route, $scope,$window,$http, $location,User,UserState) {
+angular.module('app').controller("LoginController", function ($route, $scope, $window, $http, $location, User, UserState, $cookies) {
 
     var vm=this;
-    vm.loggedIn=false;
-    $window.sessionStorage.loggedIn=false;
-    $window.sessionStorage.isAdmin=false;
+    // vm.loggedIn=false;
+    // $window.sessionStorage.loggedIn=false;
+    // $window.sessionStorage.isAdmin=false;
+    // $cookies.put("loggedIn",true);
+
+
 
     vm.login=function() {
-        var url="/user/login"
+        var url = "/user/login";
 
         this.username=document.getElementById("username").value;
         this.password=document.getElementById("password").value;
@@ -22,16 +25,30 @@ angular.module('app').controller("LoginController", function ($route, $scope,$wi
             }
             else {
                 //set the user here
-                data
+                data;
                 $location.path("Home");
-                $window.sessionStorage.loggedIn=true;
+                // $window.sessionStorage.loggedIn=true;
                 //check here if user is cust or admin and update the top tabs to reflect
+                // if(data.userType=="Administrator"){
+                //     $window.sessionStorage.isAdmin=true;
+                // }
+                // $window.sessionStorage.username=data.username;
+                // $window.sessionStorage.userId=data.id;
+                //
+                var isAdmin = false;
                 if(data.userType=="Administrator"){
-                    $window.sessionStorage.isAdmin=true;
+                    isAdmin = true;
                 }
-                $window.sessionStorage.username=data.username;
-                $window.sessionStorage.userId=data.id;
-                //trigger
+                var userDetails = {
+                    userId: data.id,
+                    isAdmin: isAdmin,
+                    loggedIn: true,
+                    username: data.username
+                };
+
+                $cookies.putObject("user", userDetails);
+
+                //trigger observer
                 UserState.notify(true);
             }
 
@@ -39,7 +56,7 @@ angular.module('app').controller("LoginController", function ($route, $scope,$wi
 
         })
         ;
-    }
+    };
 
     vm.goToRegister = function () {
         $location.path("Register");

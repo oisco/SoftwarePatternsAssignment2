@@ -13,6 +13,7 @@
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app/app.module.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js" ></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-cookies.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/styles.css"/>
 
     <script type="text/javascript" src="app/Controllers/app.controller.js"></script>
@@ -30,19 +31,19 @@
 
 </head>
 <body ng-app="app" ng-controller="AppController as vm">
-<nav ng-show="vm.loggedIn" class="navbar navbar-default">
+<nav ng-show="vm.user.loggedIn===true" class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li ng-show="vm.isAdmin==='true'" ><a href="/">An admin Option</a></li>
+            <li ng-show="vm.user.isAdmin===true"><a href="/">An admin Option</a></li>
             <li><a href="#Products">View All Products</a></li>
-            <li ng-show="vm.isAdmin==='false'"><a href="#MyOrders">My orders</a></li>
-            <li ng-show="vm.isAdmin==='false'"><a href="#MyCart">My Cart({{vm.cartItemCount}}</a></li>
+            <li ng-show="vm.user.isAdmin===false"><a href="#MyOrders">My orders</a></li>
+            <li ng-show="vm.user.isAdmin===false"><a href="#MyCart">My Cart</a></li>
         </ul>
         <div align="right">
-            <p>Signed in as {{vm.username}}</p>
+            <p>Signed in as {{vm.user.username}}</p>
             <button class="button" ng-click="vm.logout()">Logout</button>
         </div>
     </div>

@@ -1,5 +1,6 @@
 package com.example.Controllers;
 
+import com.example.Entity.Comment;
 import com.example.Entity.Product;
 import com.example.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,10 @@ public class ProductController {
     public void updateProduct(@RequestBody Product prod) {
         this.productService.update(prod);
     }
+
+    @RequestMapping(value = "{prodId}/comment", method = RequestMethod.POST)
+    public void addCommentToProduct(@PathVariable int prodId, @RequestBody Comment comment) {
+        this.productService.addCommentToProduct(prodId, comment);
+    }
+
 }

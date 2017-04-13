@@ -1,14 +1,18 @@
 <div class="container">
     <h1>My Orders</h1>
-    <table class="table"><th>Date</th><th>Total</th><th>Items</th><th>Address</th>
+    <table class="table">
+        <th>Date</th>
+        <th>Total</th>
+        <th>Items</th>
     <tr ng-repeat="order in vm.orders">
         <td>{{order.date | date}}</td>
-        <td>{{order.cost}}</td>
+        <td> € {{order.cost}}</td>
 
         <td>
-                <td nested-item ng-repeat="product in order.products">
-                <p> <img src="{{product.price}}">{{product.title}}</p>
-            </td>
+            <div nested-item ng-repeat="product in order.products">
+                <div float="left"><img ng-src="{{product.image}}" height="100"></div>
+                <div float="right">{{product.title}}</div>
+            </div>
         </td>
     </tr>
     </table>

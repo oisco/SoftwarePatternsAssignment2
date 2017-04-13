@@ -20,7 +20,6 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
                 url="/user/customer/add"
             }
 
-            var user=new User(vm.username,vm.password);
             $http({
                 method: 'POST',
                 url: url,
@@ -39,10 +38,10 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
         {
             return true;
         }else {
-            alert("Please ensure both passwords match")
+            alert("Please ensure both passwords match");
             return false;
         }
-    }
+     };
 
     goToLogin = function () {
         $location.path("/");

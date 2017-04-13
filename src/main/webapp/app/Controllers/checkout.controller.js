@@ -1,4 +1,4 @@
-angular.module('app').controller("CheckoutController", function (productService,$http, $location,$window) {
+angular.module('app').controller("CheckoutController", function (productService, $http, $location, $cookies) {
 
     var vm=this;
     vm.address=null;
@@ -6,13 +6,14 @@ angular.module('app').controller("CheckoutController", function (productService,
     vm.order=productService.getCart();
     vm.total=productService.total();
 
-        var userId=$window.sessionStorage.userId;
+    var userId = $cookies.getObject("user").userId;
 
         //request the users address from server
     var url="/user/"+userId+"/address";
     var addressPromise=$http.get(url);
     addressPromise.then(function (response) {
             vm.address=response.data;
+        debugger;
         });
 
     vm.saveOrder=function () {
@@ -26,8 +27,9 @@ angular.module('app').controller("CheckoutController", function (productService,
         }).success(function (data) {
             if (data == "") {
                 alert("Your order is on its way");
+                productService.clearCart();
                 $location.path("MyCart");
             }
-        });;
+        });
     }
 });
