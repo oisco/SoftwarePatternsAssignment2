@@ -5,18 +5,14 @@ angular.module('app').controller("RegisterController", function ($scope,$http, $
     vm.user=null;
 
     vm.Register = function () {
-        vm.user;
-        debugger;
         if(passwordMatches()){
             var url="";
             if(vm.isAdmin){
                 url="/user/admin/add"
-
             }
             else {
                 url="/user/customer/add"
             }
-
             $http({
                 method: 'POST',
                 url: url,

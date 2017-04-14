@@ -18,17 +18,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserService userService;
-    @Autowired
     AddressService addressService;
+    @Autowired
+    private UserService userService;
 
     public UserController(UserService userService){
         this.userService=userService;
     }
 
+    //
     @RequestMapping(value = "customer/add",method = RequestMethod.POST)
-            public void addCust(@RequestBody String json) {
-
+    public void customerFactory(@RequestBody String json) {
         //using gson for ease of mapping nested json objects
         Gson gson = new GsonBuilder().create();
         Customer customer=gson.fromJson(json,Customer.class);
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "admin/add",method = RequestMethod.POST)
-    public void addAdmin(@RequestBody Administrator user) {
+    public void adminFactory(@RequestBody Administrator user) {
         this.userService.saveUser(user);
     }
 
