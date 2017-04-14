@@ -22,6 +22,10 @@ ul.rating {
     cursor: pointer;
 }
 
+.container {
+    width: 80%;
+}
+
 .rating .filled {
     color: red;
 }

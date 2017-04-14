@@ -4,6 +4,10 @@ angular.module('app').controller("ProductsController", function ($cookies, $scop
     vm.products=[];
     vm.user = $cookies.getObject("user");
 
+    //sort table
+    vm.orderByField = 'title';
+    vm.reverseSort = false;
+
     var url = "/products/all";
     var productsPromise=$http.get(url);
     productsPromise.then(function (response) {
