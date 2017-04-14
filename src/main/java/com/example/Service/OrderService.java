@@ -14,10 +14,10 @@ import java.util.List;
  */
 @Service
 public class OrderService {
-    @Autowired
-    private OrderDAO orderDAO;
 @Autowired
 CustomerOrderBuilder customerOrderBuilder;
+    @Autowired
+    private OrderDAO orderDAO;
 
     public OrderService(OrderDAO orderDAO){
         this.orderDAO=orderDAO;
@@ -34,5 +34,13 @@ CustomerOrderBuilder customerOrderBuilder;
 
     public List<CustOrder> getUsersOrders(int userId) {
         return this.orderDAO.findByCustomerId(userId);
+    }
+
+    public List<Object[]> findAll() {
+        return this.orderDAO.findAllOrders();
+    }
+
+    public CustOrder getOrder(int orderId) {
+        return this.orderDAO.findOne(orderId);
     }
 }

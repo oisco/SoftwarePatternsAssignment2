@@ -27,6 +27,8 @@
     <script type="text/javascript" src="app/Controllers/cart.controller.js"></script>
     <script type="text/javascript" src="app/Controllers/checkout.controller.js"></script>
     <script type="text/javascript" src="app/Controllers/order.controller.js"></script>
+    <script type="text/javascript" src="app/Controllers/view.order.controller.js"></script>
+    <script type="text/javascript" src="app/Controllers/all.orders.controller.js"></script>
 
 
 </head>
@@ -37,7 +39,7 @@
             <a class="navbar-brand" href="#"></a>
         </div>
         <ul class="nav navbar-nav">
-            <li ng-show="vm.user.isAdmin===true"><a href="/">An admin Option</a></li>
+            <li ng-show="vm.user.isAdmin===true"><a href="#AllOrders">View All Orders</a></li>
             <li><a href="#Products">View All Products</a></li>
             <li ng-show="vm.user.isAdmin===false"><a href="#MyOrders">My orders</a></li>
             <li ng-show="vm.user.isAdmin===false"><a href="#MyCart">My Cart</a></li>

@@ -11,27 +11,27 @@ import java.util.List;
 // * Created by Oisín on 3142017.
 // *
 @Entity
+@NamedNativeQuery(name = "CustOrder.findAllOrders", query = "select u.id,u.username,o.cost,o.order_date," +
+        "a.address_line1,a.address_line2,a.address_line3,a.city,a.country,o.id as orderId " +
+        " from cust_order o, address a, user u " +
+        "where a.id=o.address_id" +
+        " and o.customer_id=u.id;")
+
 public class CustOrder implements OrderPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
-
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Customer customer;
-
-
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     Address address;
-
     @ManyToMany(fetch = FetchType.LAZY,targetEntity=Product.class)
     List<Product> products;
-
     Date order_date;
     double cost;
-
     String paymentType;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Customer customer;
 
     public CustOrder(){
 
@@ -66,12 +66,27 @@ public class CustOrder implements OrderPlan {
         return address;
     }
 
+    //    @Override
+    public void setAddress(Address deliveryAddress) {
+        this.address = deliveryAddress;
+    }
+
     public List<Product> getProducts() {
         return products;
     }
 
+    //    @Override
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public String getPaymentType() {
         return paymentType;
+    }
+
+    //    @Override
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
     }
 
     public int getId() {
@@ -92,21 +107,6 @@ public class CustOrder implements OrderPlan {
 
     public Date getDate() {
         return order_date;
-    }
-
-//    @Override
-    public void setPaymentType(String paymentType) {
-        this.paymentType=paymentType;
-    }
-
-//    @Override
-    public void setProducts(List<Product> products) {
-        this.products=products;
-    }
-
-//    @Override
-    public void setAddress(Address deliveryAddress) {
-        this.address=deliveryAddress;
     }
 
 //    @Override

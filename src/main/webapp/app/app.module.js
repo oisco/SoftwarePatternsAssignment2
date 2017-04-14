@@ -15,6 +15,14 @@
                 templateUrl : "templates/ViewAllProducts.html",
                 controller : "ProductsController as vm",
             })
+            .when("/AllOrders", {
+                templateUrl: "templates/AllOrders.html",
+                controller: "ViewAllOrdersController as vm",
+            })
+            .when("/ViewOrder/:id", {
+                templateUrl: "templates/ViewOrder.html",
+                controller: "ViewOrderController as vm",
+            })
             .when("/AddProduct", {
                 templateUrl : "templates/AddProduct.html",
                 controller : "AddProductController as vm",

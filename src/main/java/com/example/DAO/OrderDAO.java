@@ -13,4 +13,6 @@ import java.util.List;
 public interface OrderDAO extends JpaRepository<CustOrder, Integer> {
 
     List<CustOrder> findByCustomerId(int userId);
+
+    List<Object[]> findAllOrders();
 }

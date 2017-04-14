@@ -22,10 +22,22 @@ public class OrderController {
         return this.orderService.getUsersOrders(userId);
     }
 
+    @RequestMapping(value = "view/{orderId}", method = RequestMethod.GET)
+    public CustOrder getOrder(@PathVariable int orderId) {
+        return this.orderService.getOrder(orderId);
+    }
+
 
     @RequestMapping(value = "add",method =  RequestMethod.POST)
     public void saveOrder(@RequestBody Object[] orderDetails) {
         //in request body of the above request includes and object array where index: 0-product list 1-address 2-paymentType
        this.orderService.BuildOrder(orderDetails);
     }
+
+    @RequestMapping(value = "all", method = RequestMethod.GET)
+    public List<Object[]> getAllOrders() {
+        return this.orderService.findAll();
+    }
+
+
 }

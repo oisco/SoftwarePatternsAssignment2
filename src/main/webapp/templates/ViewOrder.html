@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>View Order</h1>
+
+    <h3>Order Summary</h3>
+    <table class="table">
+        <tr>
+            <td><b> Cost</b></td>
+            <td><b>Payment Type</b></td>
+        </tr>
+        <tr>
+            <td>{{vm.order.cost}}</td>
+            <td>{{vm.order.paymentType}}</td>
+
+        </tr>
+    </table>
+
+    <h3>items</h3>
+    <table class="table">
+        <th>Product Name</th>
+        <th>Product Cost</th>
+        <tr ng-repeat="product in vm.order.products">
+            <td><img ng-src="{{product.image}}" height="100" width="100">
+                {{product.title}}
+            </td>
+            <td>{{product.price}}</td>
+        </tr>
+    </table>
+</div>
